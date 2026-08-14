@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXT LEVEL CAR DETAILING</title>
+    <link rel="stylesheet" href="next.css">
+    <script src="next.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div class="topbar">
+            <a class="brand" href="#">NEXT LEVEL</a>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="site-nav">
+                <a href="https://www.google.com/maps/place/29%C2%B053'46.9%22N+73%C2%B052'30.2%22E/@29.8963611,73.8750556,17z/data=!3m1!4b1!4m4!3m3!8m2!3d29.8963611!4d73.8750556?entry=ttu&g_ep=EgoyMDI2MDgxMS4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank" rel="noopener noreferrer">Location</a>
+                <a href="#gallery">Gallery</a>
+                <a href="https://wa.me/+918306224244" target="_blank" rel="noopener noreferrer">Contact</a>
+                <a href="https://www.instagram.com/next_level_car_detailing_sgnr" target="_blank"
+                    rel="noopener noreferrer">Instagram</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Professional Auto Care</p>
+                <h1>Premium Car Care & Showroom Shine</h1>
+                <p>Luxury detailing, ceramic protection, and interior refresh for cars that look and feel brand new.</p>
+                <a class="button" href="https://wa.me/+918306224244" target="_blank" rel="noopener noreferrer">Book Your
+                    Detail</a>
+            </div>
+        </section>
+
+        <section class="section services" id="services">
+            <div class="section-header">
+                <p class="eyebrow">What We Offer</p>
+                <h2>Our Services</h2>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <img src="fome.jpg" alt="Exterior Detailing">
+                    <h3>Exterior Detailing</h3>
+                    <p>High-quality wash, wax, and polish to restore your car’s showroom finish.</p>
+                </div>
+                <div class="card">
+                    <img src="fogg.jpeg" alt="Interior Detailing">
+                    <h3>Interior Detailing</h3>
+                    <p>Deep cleaning of seats, carpets, and dashboard for a fresh, spotless interior.</p>
+                </div>
+                <div class="card">
+                    <img src="ppf.jpg" alt="PPF And Ceramic Coating">
+                    <h3>PPF And Ceramic Coating</h3>
+                    <p>Long-lasting paint protection with advanced ceramic coating technology.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section gallery" id="gallery">
+            <div class="section-header">
+                <p class="eyebrow">Finished Work</p>
+                <h2>Gallery</h2>
+            </div>
+            <div class="gallery-grid">
+                <img src="carback.jpg" alt="Detailing sample 1">
+                <img src="rubbing.jpg" alt="Detailing sample 2">
+                <img src="tyre.jpg" alt="Detailing sample 3">
+                <img src="porshe.jpg" alt="Detailing sample 4">
+            </div>
+        </section>
+
+        <section class="section contact" id="contact">
+            <div class="section-header">
+                <p class="eyebrow">Get In Touch</p>
+                <h2>Contact Us</h2>
+            </div>
+
+            <form id="whatsappForm" onsubmit="sendToWhatsApp(event)">
+                <select id="service" placeholder="Select Service" required>
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="Exterior Detailing">Exterior Detailing</option>
+                    <option value="Interior Detailing">Interior Detailing</option>
+                    <option value="PPF And Ceramic Coating">PPF And Ceramic Coating</option>
+                </select>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <input type="tel" id="phone" placeholder="Your Phone Number" required>
+                <input type="text" id="Address" placeholder="Your Address" required>
+                <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 NEXT LEVEL Car Detailing. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const toggleButton = document.querySelector('.menu-toggle');
+        const siteNav = document.querySelector('.site-nav');
+
+        toggleButton.addEventListener('click', () => {
+            siteNav.classList.toggle('open');
+            toggleButton.classList.toggle('open');
+        });
+
+        // WhatsApp Form Submit Function
+        function sendToWhatsApp(event) {
+            // Form ko default reload hone se rokein
+            event.preventDefault();
+
+            // Input fields se values nikalein
+            let name = document.getElementById('name').value.trim();
+            let email = document.getElementById('email').value.trim();
+            let phone = document.getElementById('phone').value.trim();
+            let address = document.getElementById('Address').value.trim();
+            let service = document.getElementById('service').value.trim();
+            let message = document.getElementById('message').value.trim();
+
+            // WhatsApp number (Bina '+' ya special characters ke, sirf digits)
+            let phoneNumber = "918306224244";
+
+            // WhatsApp par bhejne ke liye text format banayein
+            let whatsappText = `*New Contact Message*%0A%0A` +
+                `*Name:* ${encodeURIComponent(name)}%0A` +
+                `*Email:* ${encodeURIComponent(email)}%0A` +
+                `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                `*Address:* ${encodeURIComponent(address)}%0A` +
+                `*Service:* ${encodeURIComponent(service)}%0A` +
+                `*Message:* ${encodeURIComponent(message)}`;
+
+            // Correct WhatsApp URL generate karein
+            let whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappText}`;
+
+            // User ko WhatsApp par redirect karein
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+
+</html>
